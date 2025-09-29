@@ -19,7 +19,7 @@ const TabBarItem = ({ name, title, color, focused }: TabBarItemProps) => (
     <Ionicons name={name as any} size={20} color={focused ? "#fff" : color} />
     <Text
       className={`ml-2 text-xs ${
-        focused ? "text-white font-bold" : "text-gray-400"
+        focused ? "text-white font-bold" : "black font-bold"
       }`}
       numberOfLines={1}
       ellipsizeMode="tail"
@@ -33,7 +33,12 @@ const TabBarItem = ({ name, title, color, focused }: TabBarItemProps) => (
 const optionsConfig = (iconName: string, title: string) => ({
   headerShown: false,
   tabBarIcon: ({ color, focused }: { color: string; focused: boolean }) => (
-    <TabBarItem name={iconName} title={title} color={color} focused={focused} />
+    <TabBarItem
+      name={iconName}
+      title={title}
+      color={"#000"}
+      focused={focused}
+    />
   ),
   tabBarLabel: () => null,
 });
@@ -44,7 +49,7 @@ const _Layout = () => (
       tabBarStyle: {
         height: 60,
         paddingVertical: 8,
-        backgroundColor: "#111827",
+        backgroundColor: "#43e5a2",
         borderRadius: 20,
         marginHorizontal: 8,
         marginBottom: 16,
@@ -52,19 +57,11 @@ const _Layout = () => (
       },
     }}
   >
-    <Tabs.Screen name="index" options={optionsConfig("home-outline", "Home")} />
     <Tabs.Screen
-      name="search"
-      options={optionsConfig("search-outline", "Search")}
+      name="listen"
+      options={optionsConfig("headset-outline", "Listen")}
     />
-    <Tabs.Screen
-      name="saved"
-      options={optionsConfig("bookmark-outline", "Saved")}
-    />
-    <Tabs.Screen
-      name="profile"
-      options={optionsConfig("person-outline", "Profile")}
-    />
+    <Tabs.Screen name="read" options={optionsConfig("book-outline", "Read")} />
   </Tabs>
 );
 
